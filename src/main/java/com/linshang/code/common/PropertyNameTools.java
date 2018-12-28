@@ -18,9 +18,9 @@ public class PropertyNameTools {
 		typeMap.put("INT", "Long");
 		typeMap.put("BIT", "Boolean");
 		
-		typeMap.put("FLOAT", "Double");
-		typeMap.put("DOUBLE", "Double");
-		typeMap.put("DECIMAL", "Double");
+		typeMap.put("FLOAT", "BigDecimal");
+		typeMap.put("DOUBLE", "BigDecimal");
+		typeMap.put("DECIMAL", "BigDecimal");
 		
 		typeMap.put("CHAR", "String");
 		typeMap.put("VARCHAR", "String");

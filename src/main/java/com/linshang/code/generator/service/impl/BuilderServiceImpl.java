@@ -18,90 +18,9 @@ import com.linshang.code.generator.service.BuilderService;
 
 @Service
 public class BuilderServiceImpl implements BuilderService {
-	
+
 	@Resource
 	private FieldService fieldService;
-	
-	/**
-	 * 获得主键类型
-	 * @param list
-	 * @return
-	 */
-	private String getPKType(List<Field> list) {
-		String pk = "Long";
-		for(Field field : list){
-			if("Y".equals(field.getIsPk())){
-				pk = field.getType();
-				break;
-			}
-		}
-		return pk;
-	}
-	
-	/**
-	 * 获得主键field并首字母大写返回
-	 * @param list
-	 * @return
-	 */
-	private String getPKFieldUp(List<Field> list) {
-		String fieldUp = "Id";
-		for(Field field : list){
-			if("Y".equals(field.getIsPk())){
-				fieldUp = PropertyNameTools.firstLetterUpperCase(field.getField());
-				break;
-			}
-		}
-		return fieldUp;
-	}
-	
-	/**
-	 * 获得主键字段
-	 * @param fieldList
-	 * @return
-	 */
-	private Object getPKField(List<Field> fieldList) {
-		String fieldUp = "id";
-		for(Field field : fieldList){
-			if("Y".equals(field.getIsPk())){
-				fieldUp = field.getField();
-				break;
-			}
-		}
-		return fieldUp;
-	}
-	
-	private Map<String, Object> modelImport(List<Field> fieldList) {
-		Map<String, Object> result = new LinkedHashMap<String, Object>();
-		for (Field field : fieldList) {
-			if ("String".equals(field.getType()) || "Long".equals(field.getType()) || "Integer".equals(field.getType())
-					|| "Float".equals(field.getType()) || "Double".equals(field.getType())) 
-			{
-				continue;
-			}
-			if("Date".equals(field.getType())){
-				if("Date".equals(field.getType())){
-					result.put("Date","import java.util.Date;");
-					result.put("Temporal","import javax.persistence.Temporal;");
-					result.put("TemporalType","import javax.persistence.TemporalType;");
-				}
-			}
-			
-		}
-		return result;
-	}
-	
-	private String templatePath(String template,String type,String name){
-		StringBuilder result = new StringBuilder("templates/");
-		if(StringUtils.isNotBlank(template)){
-			result.append(template);
-			result.append("/");
-		}
-		result.append(type);
-		result.append("/");
-		result.append(name);
-		result.append(".html");
-		return result.toString();
-	}
 
 	@Override
 	public String buildModel(String template, BuildData data) {
