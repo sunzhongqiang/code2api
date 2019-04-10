@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>code2api</name>
-	<description>定时任务模块</description>
+	<description>代码生成接口部分</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
