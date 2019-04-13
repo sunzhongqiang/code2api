@@ -10,7 +10,7 @@ import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 import org.springframework.stereotype.Component;
 
-@ServerEndpoint(value = "/websocket")
+@ServerEndpoint(value = "/coding")
 @Component
 public class CodeWebSocket {
     // 静态变量，用来记录当前在线连接数。应该把它设计成线程安全的。
@@ -23,7 +23,7 @@ public class CodeWebSocket {
     private Session session;
 
     /**
-     * 连接建立成功调用的方法
+     * 连接建立成功调用的方法.
      */
     @OnOpen
     public void onOpen(Session session) {
@@ -39,7 +39,7 @@ public class CodeWebSocket {
     }
 
     /**
-     * 连接关闭调用的方法
+     * 连接关闭调用的方法.
      */
     @OnClose
     public void onClose() {
@@ -49,7 +49,7 @@ public class CodeWebSocket {
     }
 
     /**
-     * 收到客户端消息后调用的方法
+     * 收到客户端消息后调用的方法.
      *
      * @param message 客户端发送过来的消息
      */
@@ -68,7 +68,7 @@ public class CodeWebSocket {
     }
 
     /**
-     * 发生错误时调用
+     * 发生错误时调用.
      * 
      */
     @OnError
@@ -85,7 +85,7 @@ public class CodeWebSocket {
 
 
     /**
-     * 群发自定义消息
+     * 群发自定义消息.
      */
     public static void sendInfo(String message) throws IOException {
         for (CodeWebSocket item : webSocketSet) {
