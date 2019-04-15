@@ -10,8 +10,8 @@ import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 import org.springframework.stereotype.Component;
 
-@ServerEndpoint(value = "/coding")
 @Component
+@ServerEndpoint(value = "/coding")
 public class CodeWebSocket {
     // 静态变量，用来记录当前在线连接数。应该把它设计成线程安全的。
     private static int onlineCount = 0;

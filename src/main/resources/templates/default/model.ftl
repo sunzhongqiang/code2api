@@ -6,9 +6,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Column;
-<#list model_column as model>
-    $importList.get($key)
-</list >
+<#list importList as import>
+import ${import}
+</#list>
 
 /**
 * ${table_annotation}模型.
@@ -17,12 +17,10 @@ import javax.persistence.Column;
 */
 @Entity
 @Table(name="${table_name_small}")
-@Where(clause = "status > '0'")
-@Inheritance(strategy= InheritanceType.SINGLE_TABLE)
 public class ${table_name} extends BaseModel implements ICreateListenable,IModifyListenable,IDeleteListenable {
 
-    <#if model_column?exists>
-        <#list model_column as model>
+<#if model_column?exists>
+<#list model_column as model>
     /**
     *${model.columnComment!}
     */
@@ -36,8 +34,8 @@ public class ${table_name} extends BaseModel implements ICreateListenable,IModif
     private Date ${model.changeColumnName?uncap_first};
 
     </#if>
-        </#list>
-    </#if>
+</#list>
+</#if>
 
 <#if model_column?exists>
 <#list model_column as model>
@@ -63,10 +61,5 @@ public class ${table_name} extends BaseModel implements ICreateListenable,IModif
 </#if>
 </#list>
 </#if>
-
 }
---------------------- 
-作者：阿_毅 
-来源：CSDN 
-原文：https://blog.csdn.net/huangwenyi1010/article/details/71249258 
-版权声明：本文为博主原创文章，转载请附上博文链接！
+
